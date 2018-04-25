@@ -13,22 +13,22 @@
 	<nav>
 		<ul>
 			<li>
-				<a href="Inicio"></a>
+				<a href="">Inicio</a>
 			</li>
 			<li>
-				<a href="Nosotros"></a>
+				<a href="">Nosotros</a>
 			</li>
 			<li>
-				<a href="Servicios"></a>
+				<a href="">Servicios</a>
 			</li>
 			<li>
-				<a href="Contactos"></a>
+				<a href="">Contactos</a>
 			</li>
 		</ul>
 	</nav>
 
 	<section>
-		<h1>Página de Incio</h1>
+		<h1>Página de Inicio</h1>
 	</section>
 </body>
 </html>
