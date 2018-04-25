@@ -16,7 +16,10 @@ class MvcController
 	public function enlacesPaginasController()
 	{
 		$enlace = $_GET["action"];
-		echo $enlace;
+
+		$response = EnlacesPaginas::enlacesPaginasModel($enlace);
+
+		include $response;
 	}
 }
 

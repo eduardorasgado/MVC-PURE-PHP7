@@ -6,6 +6,7 @@ En el index se muestra la salida de las vistas al usuario
  que el usuario envie al controlador
 */
  require_once('controllers/controller.php');
+ require_once('models/model.php');
 
 $mvc = new MvcController();
 $mvc->plantilla();
