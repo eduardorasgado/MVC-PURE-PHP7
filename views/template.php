@@ -14,7 +14,7 @@
 	include("modules/navegacion.php");
 	 ?>
 	<section>
-		<h1>Página de Inicio</h1>
+		
 	</section>
 </body>
 </html>
