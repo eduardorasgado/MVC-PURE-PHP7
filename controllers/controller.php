@@ -38,16 +38,29 @@ class MvcController
 	#------------------------------------
 	public function registroUsuarioController()
 	{
-		$datosController = [
+		if(isset($_POST["usuario"]))
+		{
+			$datosController = [
 			"usuario" => $_POST["usuario"],
 			"email" => $_POST["email"],
 			"password" => $_POST["password"]
-		];
+			];
 
-		$response = Datos::registroUsuarioModel($datosController, "usuarios");	
+			$response = Datos::registroUsuarioModel($datosController, "usuarios");	
 
-		echo $response;
-			
+			if ($response == "success") 
+			{
+				//con header aseguramos no tener
+				//duplicados de usuario por cada
+				//vez que actualizamos
+				header("location:index.php?action=ok");
+			}
+			else
+			{
+				header("location: index.php");
+			}
+		}
+
 	}
 
 	#-------------------------------------

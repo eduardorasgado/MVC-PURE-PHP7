@@ -15,4 +15,11 @@
 $registro = new mvcController();
 $registro->registroUsuarioController();
 
+if(isset($_GET["action"]))
+{
+	if ($_GET["action"] == "ok") {
+		echo "Registro exitoso";
+	}
+}
+
  ?>
