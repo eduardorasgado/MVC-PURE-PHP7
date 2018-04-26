@@ -22,16 +22,35 @@ class MvcController
 		include $response;
 	}
 
+	#INTERACCCION USUARIO
+	#---------------------------------------
 	public function enlacesDBController()
 	{
 		
 		$enlace = $this->checkSet();
 
-		$response = EnlacesPaginas::enlacesDBModel($enlace);
+		$response = EnlacesPaginasDB::enlacesDBModel($enlace);
 
 		include $response;
 	}
 
+	#REGISTRO USUARIOS
+	#------------------------------------
+	public function registroUsuarioController()
+	{
+		$datosController = [
+			"usuario" => $_POST["usuario"],
+			"email" => $_POST["email"],
+			"password" => $_POST["password"]
+		];
+
+		$response = Datos::registroUsuarioModel($datosController, "usuarios");	
+
+		echo $response;
+			
+	}
+
+	#-------------------------------------
 	private function checkSet()
 	{
 		if (isset($_GET["action"])) 
