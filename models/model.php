@@ -14,6 +14,19 @@ class EnlacesPaginas
 		}
 		return "views/modules/inicio.php";	
 	}
+
+	static public function enlacesBDModel($enlacesModel)
+	{
+		if($enlacesModel == "ingresar" ||
+			$enlacesModel == "usuarios" ||
+			$enlacesModel == "editar" ||
+			$enlacesModel == "salir")
+		{
+			$modulo = "views/modules/".$enlacesModel.".php";
+			return $modulo;
+		}
+		return "views/modules/inicio.php";	
+	}
 }
 
  ?>

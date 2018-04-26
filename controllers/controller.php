@@ -15,19 +15,34 @@ class MvcController
 	#----------------------------------------
 	public function enlacesPaginasController()
 	{
-		if (isset($_GET["action"])) 
-		{
-			# code...
-			$enlace = $_GET["action"];
-		}
-		else
-		{
-			$enlace = '';
-		}
+		$enlace = $this->checkSet();
 
 		$response = EnlacesPaginas::enlacesPaginasModel($enlace);
 
 		include $response;
+	}
+
+	public function enlacesDBController()
+	{
+		
+		$enlace = $this->checkSet();
+
+		$response = EnlacesPaginas::enlacesDBModel($enlace);
+
+		include $response;
+	}
+
+	private function checkSet()
+	{
+		if (isset($_GET["action"])) 
+		{
+			# code...
+			return $_GET["action"];
+		}
+		else
+		{
+			return $enlace = '';
+		}
 	}
 }
 
