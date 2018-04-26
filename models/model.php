@@ -2,7 +2,7 @@
 
 class EnlacesPaginas
 {
-	public function enlacesPaginasModel($enlacesModel)
+	static public function enlacesPaginasModel($enlacesModel)
 	{
 		if($enlacesModel == "nosotros" ||
 			$enlacesModel == "servicios" ||

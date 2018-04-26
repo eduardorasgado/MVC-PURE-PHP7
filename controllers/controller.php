@@ -15,7 +15,15 @@ class MvcController
 	#----------------------------------------
 	public function enlacesPaginasController()
 	{
-		$enlace = $_GET["action"];
+		if (!empty($_GET)) 
+		{
+			# code...
+			$enlace = $_GET["action"];
+		}
+		else
+		{
+			$enlace = '';
+		}
 
 		$response = EnlacesPaginas::enlacesPaginasModel($enlace);
 
