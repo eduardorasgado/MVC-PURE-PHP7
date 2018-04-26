@@ -1,4 +1,4 @@
-<nav>
+<nav class="navbar">
 	<ul>
 		<!--li>
 			<a href="index.php">Inicio</a>
