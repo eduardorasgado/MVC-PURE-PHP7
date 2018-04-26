@@ -5,6 +5,9 @@
 	<title>
 		Template
 	</title>
+
+	<style type="text/css"></style>
+
 </head>
 <body>
 	<header>
@@ -16,7 +19,8 @@
 	<section>
 		<?php 
 		$mvc = new MvcController();
-		$mvc->enlacesPaginasController();
+		/*$mvc->enlacesPaginasController();*/
+		$mvc->enlacesDBController();
 		 ?>
 	</section>
 </body>

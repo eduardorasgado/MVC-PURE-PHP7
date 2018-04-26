@@ -15,7 +15,7 @@ class EnlacesPaginas
 		return "views/modules/inicio.php";	
 	}
 
-	static public function enlacesBDModel($enlacesModel)
+	static public function enlacesDBModel($enlacesModel)
 	{
 		if($enlacesModel == "ingresar" ||
 			$enlacesModel == "usuarios" ||
@@ -25,7 +25,7 @@ class EnlacesPaginas
 			$modulo = "views/modules/".$enlacesModel.".php";
 			return $modulo;
 		}
-		return "views/modules/inicio.php";	
+		return "views/modules/registro.php";	
 	}
 }
 

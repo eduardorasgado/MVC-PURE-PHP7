@@ -1,6 +1,6 @@
 <nav>
 	<ul>
-		<li>
+		<!--li>
 			<a href="index.php">Inicio</a>
 		</li>
 		<li>
@@ -11,6 +11,18 @@
 		</li>
 		<li>
 			<a href="index.php?action=contactenos">Contáctenos</a>
+		</li-->
+		<li>
+			<a href="index.php">Registro</a>
+		</li>
+		<li>
+			<a href="index.php?action=ingresar">Login</a>
+		</li>
+		<li>
+			<a href="index.php?action=usuarios">Usuarios</a>
+		</li>
+		<li>
+			<a href="index.php?action=salir">Salir</a>
 		</li>
 	</ul>
 </nav>
