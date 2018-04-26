@@ -30,22 +30,26 @@
 			text-decoration: none;
 			font-size: 1.2em;
 		}
-
 		section {
 			width: 1000px;
 			margin: auto;
 		}
-
+		form {
+			margin-left: 27vw;
+		}
 		form input {
 			display: block;
 			margin-top: 20px;
+		}
+		table {
+			margin-left: 25vw;
 		}
 	</style>
 
 </head>
 <body>
 	<header>
-		<h1>LOGOTIPO</h1>
+		<h1>The Gaussian Company</h1>
 	</header>
 	<?php 
 	include("modules/navegacion.php");
