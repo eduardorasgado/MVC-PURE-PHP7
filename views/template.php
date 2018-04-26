@@ -16,7 +16,7 @@
 		.navbar {
 			background: #343D46FF;
 			color: white;
-			padding: 20px 0px;
+			padding: 10px 0px;
 		}
 		.navbar ul {
 			padding-left: 18vw;
@@ -28,11 +28,17 @@
 		.navbar a {
 			color: white;
 			text-decoration: none;
+			font-size: 1.2em;
 		}
 
 		section {
 			width: 1000px;
 			margin: auto;
+		}
+
+		form input {
+			display: block;
+			margin-top: 20px;
 		}
 	</style>
 
