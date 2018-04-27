@@ -12,7 +12,7 @@
 
 
 $ingreso = new MvcController();
-$ingreso->ingresoUsuarioController()
+$ingreso->ingresoUsuarioController();
 
 if(isset($_GET["action"]))
 {

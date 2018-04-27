@@ -37,6 +37,23 @@ class Datos extends Conexion
 			return "Error";
 		}
 	}
+
+	#INGRESO USUARIO
+	#---------------------------------------------
+	public function ingresoUsuarioModel($datos, $tabla)
+	{
+		$query = "SELECT usuario, password WHERE usuario = :usuario";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":usuario", $datos['usuario'], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		#fetch obitiene una fila de un conjunto de 
+		#resultados asociados al objeto PDO Statement
+		return $stmt->fetch();
+	}
 }
 
  ?>

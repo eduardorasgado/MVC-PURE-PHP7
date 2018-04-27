@@ -80,11 +80,11 @@ class MvcController
 				//con header aseguramos no tener
 				//duplicados de usuario por cada
 				//vez que actualizamos
-				header("location:index.php?action=ok");
+				header("location:ingresar.php?action=ok");
 			}
 			else
 			{
-				header("location: index.php");
+				header("location: ingresar.php");
 			}
 		}
 	}
