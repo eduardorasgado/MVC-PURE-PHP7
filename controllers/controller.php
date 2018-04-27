@@ -94,7 +94,18 @@ class MvcController
 	public function vistaUsuariosController()
 	{
 		$response = Datos::vistaUsuariosModel("usuarios");
-		return $response;
+
+		#imprimiendo en el html de la vista
+		foreach ($response as $key => $user) {
+			echo "<tr>";
+			echo "<td>".$user['usuario']."</td>";
+			echo "<td>".$user['password']."</td>";
+			echo "<td>".$user['email']."</td>";
+			echo "<td><button>Editar</button></td>";
+			echo "<td><button>Borrar</button></td>";
+			echo "</tr>";
+		}
+
 	}
 
 	#-------------------------------------

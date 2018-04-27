@@ -42,7 +42,7 @@
 			margin-top: 20px;
 		}
 		table {
-			margin-left: 25vw;
+			margin-left: 15vw;
 		}
 	</style>
 
