@@ -10,6 +10,7 @@ require_once('models/enlaces.php');
 require_once('controllers/controller.php');
 /*require_once('models/model.php');*/
 
+session_start();
 $mvc = new MvcController();
 $mvc->plantilla();
 

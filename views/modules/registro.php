@@ -1,11 +1,11 @@
 <h1>REGISTRO DE USUARIO</h1>
 
 <form method="POST">
-	<input type="text" name="usuario" placeholder="Usuario" required>
+	<input type="text" name="usuarioRegistro" placeholder="Usuario" required>
 
-	<input type="email" name="email" placeholder="Correo Electrónico" required>
+	<input type="email" name="emailRegistro" placeholder="Correo Electrónico" required>
 
-	<input type="password" name="password" placeholder="Contraseña" required>
+	<input type="password" name="passwordRegistro" placeholder="Contraseña" required>
 
 	<input type="submit" name="" value="Enviar">
 </form>
