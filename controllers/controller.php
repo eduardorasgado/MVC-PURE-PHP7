@@ -103,11 +103,19 @@ class MvcController
 			echo "<td>".$user['usuario']."</td>";
 			echo "<td>".$user['password']."</td>";
 			echo "<td>".$user['email']."</td>";
-			echo "<td><button>Editar</button></td>";
-			echo "<td><button>Borrar</button></td>";
+			echo '<td><a href="index.php?action=editar&id='.$user["id"].'"><button>Editar</button></a></td>';
+			echo "<td><a><button>Borrar</button><a></td>";
 			echo "</tr>";
 		}
 
+	}
+
+	#EDITAR USUARIO
+	#------------------------------------------
+	public function editarUsuarioController()
+	{
+		$datos = $_GET["id"];
+		echo "datos";
 	}
 
 	#-------------------------------------

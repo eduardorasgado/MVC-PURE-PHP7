@@ -36,6 +36,9 @@ class Datos extends Conexion
 		{
 			return "Error";
 		}
+
+		#cerrando conexiones abiertas a la DB
+		$stmt->close();
 	}
 
 	#INGRESO USUARIO
@@ -54,6 +57,9 @@ class Datos extends Conexion
 		#resultados asociados al objeto PDO Statement
 		return $stmt->fetch();
 		#Osea devuelve la coincidencia
+
+		#cerrando conexiones abiertas a la DB
+		$stmt->close();
 	}
 
 	#SELECCION DE DATOS 
@@ -66,6 +72,9 @@ class Datos extends Conexion
 		$stmt->execute();
 
 		return $stmt->fetchAll();
+
+		#cerrando conexiones abiertas a la DB
+		$stmt->close();
 	}
 
 
