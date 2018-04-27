@@ -38,7 +38,7 @@ class Datos extends Conexion
 		}
 
 		#cerrando conexiones abiertas a la DB
-		$stmt->close();
+		$stmt = null;
 	}
 
 	#INGRESO USUARIO
@@ -55,11 +55,13 @@ class Datos extends Conexion
 
 		#fetch obitiene una fila de un conjunto de 
 		#resultados asociados al objeto PDO Statement
-		return $stmt->fetch();
+		$pileIngreso = $stmt->fetch();
 		#Osea devuelve la coincidencia
 
 		#cerrando conexiones abiertas a la DB
-		$stmt->close();
+		$stmt = null;
+
+		return $pileIngreso;
 	}
 
 	#SELECCION DE DATOS 
@@ -71,12 +73,59 @@ class Datos extends Conexion
 
 		$stmt->execute();
 
-		return $stmt->fetchAll();
+		$pileVista = $stmt->fetchAll();
 
 		#cerrando conexiones abiertas a la DB
-		$stmt->close();
+		$stmt = null;
+
+		return $pileVista;
 	}
 
+	#EDITADO DE DATOS
+	#----------------------------------------
+	public function editarUsuarioModel($datos, $tabla)
+	{
+		$query = "SELECT id, usuario, password, email FROM $tabla WHERE id = :id";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+		$stmt->execute();
+
+		#fetch obitiene una fila de un conjunto de 
+		#resultados asociados al objeto PDO Statement
+		$pileEditar = $stmt->fetch();
+		#Osea devuelve la coincidencia
+
+		#cerrando conexiones abiertas a la DB
+		$stmt = null;
+
+		return $pileEditar;
+	}
+
+	#ACTUALIZADO DE DATOS
+	#----------------------------------------
+	public function actualizarUsuarioModel($datos, $tabla)
+	{
+		$query = "SELECT id, usuario, password, email FROM $tabla WHERE id = :id";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+		$stmt->execute();
+
+		#fetch obitiene una fila de un conjunto de 
+		#resultados asociados al objeto PDO Statement
+		$pileEditar = $stmt->fetch();
+		#Osea devuelve la coincidencia
+
+		#cerrando conexiones abiertas a la DB
+		$stmt = null;
+
+		return $pileEditar;
+	}
 
 }
 

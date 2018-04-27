@@ -86,8 +86,6 @@ class MvcController
 			{
 				header("location:index.php?action=fallo");
 			}
-
-			echo "Hola ".$response["usuario"];
 		}
 	}
 
@@ -115,7 +113,28 @@ class MvcController
 	public function editarUsuarioController()
 	{
 		$datos = $_GET["id"];
-		echo "datos";
+		$response = Datos::editarUsuarioModel($datos, "usuarios");
+
+		return $response;
+	}
+
+	#EDITAR USUARIO
+	#------------------------------------------
+	public function actualizarUsuarioController()
+	{
+		if(isset($_POST["usuarioEditar"]))
+		{
+			$datosController = [
+			"usuario" => $_POST["usuarioEditar"],
+			"password" => $_POST["passwordEditar"],
+			"email" => $_POST["emailEditar"]
+			];
+
+			$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+
+			header("location:index.php?action=usuarios")
+
+		}
 	}
 
 	#-------------------------------------
