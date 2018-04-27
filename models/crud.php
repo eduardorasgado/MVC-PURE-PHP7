@@ -108,11 +108,14 @@ class Datos extends Conexion
 	#----------------------------------------
 	public function actualizarUsuarioModel($datos, $tabla)
 	{
-		$query = "SELECT id, usuario, password, email FROM $tabla WHERE id = :id";
+		$query = "UPDATE id, usuario, password, email FROM $tabla WHERE id = :id";
 
 		$stmt = Conexion::conectar()->prepare($query);
 
 		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+		$stmt->bindParam(":usuario", $datos, PDO::PARAM_INT);
+		$stmt->bindParam(":password", $datos, PDO::PARAM_INT);
+		$stmt->bindParam(":email", $datos, PDO::PARAM_INT);
 
 		$stmt->execute();
 

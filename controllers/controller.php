@@ -125,6 +125,7 @@ class MvcController
 		if(isset($_POST["usuarioEditar"]))
 		{
 			$datosController = [
+			"id" => $_POST["id"],
 			"usuario" => $_POST["usuarioEditar"],
 			"password" => $_POST["passwordEditar"],
 			"email" => $_POST["emailEditar"]
@@ -132,7 +133,7 @@ class MvcController
 
 			$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
 
-			header("location:index.php?action=usuarios")
+			header("location:index.php?action=usuarios");
 
 		}
 	}
