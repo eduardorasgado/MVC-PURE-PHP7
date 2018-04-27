@@ -65,7 +65,8 @@ class MvcController
 
 	#INGRESO DE USUARIO
 	#---------------------------------------
-	public function ingresoUsuarioController(){
+	public function ingresoUsuarioController()
+	{
 		if(isset($_POST["usuarioIngreso"]))
 		{
 			$datosController = [
@@ -73,20 +74,27 @@ class MvcController
 			"password" => $_POST["passwordIngreso"]
 			];
 
-			$response = Datos::ingresoUsuarioModel($datosController, "usuarios");	
+			$response = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
-			if ($response == "success") 
+			if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $_POST['passwordIngreso'])
 			{
-				//con header aseguramos no tener
-				//duplicados de usuario por cada
-				//vez que actualizamos
-				header("location:ingresar.php?action=ok");
+				header("location:index.php?action=usuarios");
 			}
 			else
 			{
-				header("location: ingresar.php");
+				header("location:index.php?action=fallo");
 			}
+
+			echo "Hola ".$response["usuario"];
 		}
+	}
+
+	#VISTA DE USUARIOS 
+	#------------------------------------
+	public function vistaUsuariosController()
+	{
+		$response = Datos::vistaUsuariosModel("usuarios");
+		return $response;
 	}
 
 	#-------------------------------------

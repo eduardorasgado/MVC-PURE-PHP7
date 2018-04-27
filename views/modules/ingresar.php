@@ -16,9 +16,8 @@ $ingreso->ingresoUsuarioController();
 
 if(isset($_GET["action"]))
 {
-	if ($_GET["action"] == "ok") {
-		echo "Ingreso exitoso";
-		echo "Hola".$_POST['usuarioIngreso'];
+	if ($_GET["action"] == "fallo") {
+		echo "Algo salió mal: Cuenta o contraseña incorrecta";
 	}
 }
 

@@ -1,3 +1,4 @@
+
 <h1>USUARIOS</h1>
 
 <table border="1">
@@ -11,6 +12,7 @@
 		</tr>
 	</thead>
 	<tbody>
+
 		<tr>
 			<td>Juan</td>
 			<td>1234</td>
@@ -20,3 +22,14 @@
 		</tr>
 	</tbody>
 </table>
+
+<?php 
+
+$ingreso = new MvcController();
+$users = $ingreso->vistaUsuariosController();
+
+foreach ($users as $key => $user) {
+	echo $user["id"].", ".$user["usuario"].", ".$user["email"]."<br>";
+}
+
+ ?>

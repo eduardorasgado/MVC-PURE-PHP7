@@ -42,7 +42,7 @@ class Datos extends Conexion
 	#---------------------------------------------
 	public function ingresoUsuarioModel($datos, $tabla)
 	{
-		$query = "SELECT usuario, password WHERE usuario = :usuario";
+		$query = "SELECT usuario, password FROM $tabla WHERE usuario = :usuario";
 
 		$stmt = Conexion::conectar()->prepare($query);
 
@@ -53,7 +53,22 @@ class Datos extends Conexion
 		#fetch obitiene una fila de un conjunto de 
 		#resultados asociados al objeto PDO Statement
 		return $stmt->fetch();
+		#Osea devuelve la coincidencia
 	}
+
+	#SELECCION DE DATOS 
+	#--------------------------------------------------
+	public function vistaUsuariosModel($tabla)
+	{
+		$query = "SELECT id, usuario, password, email FROM $tabla";
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+	}
+
+
 }
 
  ?>
