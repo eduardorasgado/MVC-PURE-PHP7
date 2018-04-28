@@ -1,12 +1,18 @@
 <?php 
 
-
-if ($_SESSION["validar"])
+if (isset($_SESSION["validar"]))
 {
-	//Si estamos logueados redireccionar a usuarios
+	//Si estamos logueados redireccionar a inicio
 	header("location:index.php?action=logged");
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
+}
+
+if(isset($_GET["action"]))
+{
+	if ($_GET["action"] == "notforyou") {
+		echo "Oops! Debes registrarte o identificarte antes de hacer esa acción :)";
+	}
 }
 
 

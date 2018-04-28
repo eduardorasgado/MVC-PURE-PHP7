@@ -3,7 +3,7 @@
 if (!$_SESSION["validar"])
 {
 	//Si no esta logueado no tiene derecho de entrar
-	header("location:index.php?action=ingresar");
+	header("location:index.php?action=notforyou");
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
 }

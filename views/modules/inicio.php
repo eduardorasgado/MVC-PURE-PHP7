@@ -7,7 +7,15 @@ if ($_GET["action"])
 {
 	if ($_GET["action"] == "logged")
 	{
-		echo "Ya estás logueado, que tal si comenzamos!";
+		echo "Ya estás loguead@, que tal si comenzamos!";
+	}
+}
+
+if ($_GET["action"])
+{
+	if ($_GET["action"] == "notlogged")
+	{
+		echo "Hey no estás loguead@ vaquer@. Que tal si comenzamos!";
 	}
 }
 

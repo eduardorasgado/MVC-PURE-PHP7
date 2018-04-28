@@ -19,7 +19,7 @@
 			padding: 10px 0px;
 		}
 		.navbar ul {
-			padding-left: 18vw;
+			padding-left: 10vw;
 		}
 		.navbar li {
 			display: inline-block;

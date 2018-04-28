@@ -4,7 +4,9 @@ class EnlacesPaginasDB
 {
 	static public function enlacesDBModel($enlacesModel)
 	{
-		if($enlacesModel == "ingresar" ||
+		if(
+			$enlacesModel == "inicio" ||
+			$enlacesModel == "ingresar" ||
 			$enlacesModel == "usuarios" ||
 			$enlacesModel == "editar" ||
 			$enlacesModel == "salir")
@@ -25,6 +27,16 @@ class EnlacesPaginasDB
 		else if($enlacesModel == "logged")
 		{
 			$modulo = "views/modules/inicio.php";
+			return $modulo;
+		}
+		else if($enlacesModel == "notlogged")
+		{
+			$modulo = "views/modules/inicio.php";
+			return $modulo;
+		}
+		else if($enlacesModel == "notforyou")
+		{
+			$modulo = "views/modules/ingresar.php";
 			return $modulo;
 		}
 
