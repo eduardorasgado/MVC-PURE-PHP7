@@ -20,14 +20,14 @@ if(isset($_GET["action"]))
 
 <h1>INGRESAR</h1>
 
-<form method="POST" action="">
+<form method="POST" onsubmit="return validarIngreso()">
 	<div class="form-group">
 		<label for="usuarioIngreso">Nombre de Usuario</label>
-		<input id="usuarioIngreso" type="text" name="usuarioIngreso" placeholder="usuario" required>
+		<input id="usuarioIngreso" type="text" name="usuarioIngreso" placeholder="Mínimo 4 caracteres" placeholder="Máximo 20 caracteres" minlength="4" maxlength="20" required>
 	</div>
 	<div class="form-group">
 		<label for="passwordIngreso">Contraseña</label>
-		<input id="passwordIngreso" type="password" name="passwordIngreso" placeholder="Contraseña" required>
+		<input id="passwordIngreso" type="password" name="passwordIngreso" placeholder="Mínimo 6 caracteres" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
 	</div>
 
 	<input type="submit" name="" value="Enviar">

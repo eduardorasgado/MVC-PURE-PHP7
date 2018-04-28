@@ -15,7 +15,7 @@ if (isset($_SESSION["validar"]))
 <form method="POST" onsubmit="return validarRegistro()">
 	<div class="form-group">
 		<label for="usuarioRegistro">Nombre</label>
-		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 15 caracteres" minlength="4" maxlength="15" required>
+		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 20 caracteres" minlength="4" maxlength="20" required>
 	</div>
 
 	<div class="form-group">

@@ -87,6 +87,7 @@
 
 	<!--validacion lado cliente-->
 	<script type="text/javascript" src="views/js/validarRegistro.js"></script>
+	<script type="text/javascript" src="views/js/validarIngreso.js"></script>
 
 </body>
 </html>

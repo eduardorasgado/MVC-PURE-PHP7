@@ -16,9 +16,9 @@ function validarRegistro()
 		//no incluir ningun digito especial
 		var expression = /^[a-zA-Z0-9]*$/;
 		//Validacion para evitar enviar formulario si es modificado por el html inspector
-		if (caracteres >15) 
+		if (caracteres > 20) 
 		{
-			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 15 caracteres.";
+			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 20 caracteres.";
 			return false;
 		}
 		//validacion anti-caracteres especiales
@@ -76,6 +76,12 @@ function validarRegistro()
 	if (!terminos) 
 	{
 		document.querySelector("form").innerHTML +="<br>Deberías considerar aceptar los términos y condiciones";
+		
+		//Para que no se nos borre el form despues de mandar un error de rellenado
+		document.querySelector("#usuarioRegistro").value = usuario;
+		document.querySelector("#passwordRegistro").value = password;
+		document.querySelector("#emailRegistro").value = email;
+
 		return false;
 	}
 
