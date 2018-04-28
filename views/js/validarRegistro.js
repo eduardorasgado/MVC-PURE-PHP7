@@ -13,17 +13,23 @@ function validarRegistro()
 	if (usuario !="") 
 	{
 		var caracteres = usuario.length;
+		//no incluir ningun digito especial
+		var expression = /^[a-zA-Z0-9]*$/;
 		//Validacion para evitar enviar formulario si es modificado por el html inspector
 		if (caracteres >15) 
 		{
 			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Escriba por favor menos de 15 caracteres.";
 			return false;
 		}
-		else
+		//validacion anti-caracteres especiales
+		//y anti SQL Injection del lado cliente
+		if (!expression.test(usuario))
 		{
-			return true;
+			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Que tal si omitimos los caracteres especiales :)";
+			return false;
 		}
-	} 
+	}
+	return true; 
 }
 
 /*=====  End of VALIDAR REGISTRO  ======*/
