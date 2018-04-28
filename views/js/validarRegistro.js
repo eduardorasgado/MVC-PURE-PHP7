@@ -44,7 +44,7 @@ function validarRegistro()
 		}
 		//validacion anti-caracteres especiales
 		//y anti SQL Injection del lado cliente
-		if (!expression.test(usuario))
+		if (!expression.test(password))
 		{
 			document.querySelector("label[for='passwordRegistro']").innerHTML += "<br>Que tal si omitimos los caracteres especiales :)";
 			return false;
@@ -65,7 +65,7 @@ function validarRegistro()
 		}
 		//validacion anti-caracteres especiales
 		//y anti SQL Injection del lado cliente
-		if (!expressionsEmail.test(usuario))
+		if (!expressionsEmail.test(email))
 		{
 			document.querySelector("label[for='emailRegistro']").innerHTML += "<br>Por favor inserta un email válido :)";
 			return false;
@@ -73,7 +73,11 @@ function validarRegistro()
 	}
 
 	/*Validacion de checkbox terminos*/
-	
+	if (!terminos) 
+	{
+		document.querySelector("form").innerHTML +="<br>Deberías considerar aceptar los términos y condiciones";
+		return false;
+	}
 
 	return true; 
 }

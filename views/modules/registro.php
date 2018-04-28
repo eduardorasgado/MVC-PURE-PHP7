@@ -29,7 +29,7 @@ if (isset($_SESSION["validar"]))
 	<p>Por favor, no te confíes de contraseñas simples. Selecciona mayúsculas y minúsculas, y caracteres numéricos.</p>
 
 	<div class="terms-c">
-		<label for="terms"><input id="terms" type="checkbox" name="terms" required>Acepto los <a href="#">términos y condiciones</a></label>
+		<label for="terms"><input id="terms" type="checkbox" name="terms" >Acepto los <a href="#">términos y condiciones</a></label>
 	</div>
 
 	<input class="submit-button" type="submit" name="" value="Enviar">
