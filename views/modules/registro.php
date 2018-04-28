@@ -15,18 +15,18 @@ if (isset($_SESSION["validar"]))
 <form method="POST" onsubmit="return validarRegistro()">
 	<div class="form-group">
 		<label for="usuarioRegistro">Nombre</label>
-		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 15 caracteres" maxlength="15" required>
+		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 15 caracteres" minlength="4" maxlength="15" required>
 	</div>
 
 	<div class="form-group">
 		<label for="emailRegistro">Correo Electrónico</label>
-		<input id="emailRegistro" type="email" name="emailRegistro" placeholder="ejemplo@gmail.com" maxlength="40" required>
+		<input id="emailRegistro" type="email" name="emailRegistro" placeholder="ejemplo@gmail.com" minlength="6" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Por favor procura registrar un correo válido." required>
 	</div>
 	<div class="form-group">
 		<label for="passwordRegistro">Contraseña</label>
-		<input id="passwordRegistro" type="password" name="passwordRegistro" placeholder="Mínimo 6 caracteres" required>
+		<input id="passwordRegistro" type="password" name="passwordRegistro" placeholder="Mínimo 6 caracteres" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
 	</div>
-	<p>Por favor, no te confíes de contraseñas simples. Selecciona mayúsculas y minúsculas, caracteres numéricos y alfanunméricos.</p>
+	<p>Por favor, no te confíes de contraseñas simples. Selecciona mayúsculas y minúsculas, y caracteres numéricos.</p>
 
 	<input type="submit" name="" value="Enviar">
 </form>
