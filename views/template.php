@@ -47,10 +47,10 @@
 			display: block;			
 		}
 
-		/* Habilitar miniscula forzada al usuario en el form usuario*/
+		/* Habilitar miniscula forzada al usuario en el form usuario
 		.form-group input#usuarioRegistro{
 			text-transform: lowercase;
-		}
+		}*/
 
 		.form-group label {
 			display: inline-block;
