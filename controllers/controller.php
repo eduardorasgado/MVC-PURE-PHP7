@@ -102,7 +102,9 @@ class MvcController
 
 				$response = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
+				#para comprobar intentos fallidos
 				$intentos = $response["intentos"];
+				$usuario = $_POST["usuarioIngreso"];
 				$maximoIntentos = 4;
 
 				if ($intentos < $maximoIntentos) {
@@ -116,13 +118,24 @@ class MvcController
 					}
 					else
 					{
-						$intentos++;
+						#incremento a numero de intentos
+						++$intentos;
+
+						#Datos para actualizar intentos en la tabla y usuario
+						$datosController1 = [
+							"usuarioActual" => $usuario,
+							"actualizarIntentos" => $intentos
+						];
+
+						#llamado a modelo para actualizar intentos
+						$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
+
 						header("location:index.php?action=fallo");
 					}
 				}
 				else
 				{
-					echo "Te has excedido del maximo de intentos"
+					echo "Te has excedido del maximo de intentos";
 				}
 			}
 			else

@@ -66,6 +66,30 @@ class Datos extends Conexion
 		return $pileIngreso;
 	}
 
+	#INTENTOS USUARIO
+	#---------------------------------------------
+	public function intentosUsuarioModel($datos, $tabla)
+	{
+		$query = "UPDATE $tabla SET intentos = :intentos WHERE usuario = :usuario";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":usuario", $datos["usuarioActual"], PDO::PARAM_STR);
+		$stmt->bindParam(":intentos", $datos["actualizarIntentos"], PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			$stmt = null;
+			return true;
+		}
+		else
+		{
+			#cerrando conexiones abiertas a la DB
+			$stmt = null;
+			return false;
+		}
+	}
+
 	#SELECCION DE DATOS 
 	#--------------------------------------------------
 	public function vistaUsuariosModel($tabla)
@@ -126,11 +150,12 @@ class Datos extends Conexion
 		}
 		else
 		{
+			#cerrando conexiones abiertas a la DB
 			$stmt = null;
 			return false;
 		}
 
-		#cerrando conexiones abiertas a la DB
+		
 		
 	}
 
