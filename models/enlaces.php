@@ -22,6 +22,12 @@ class EnlacesPaginasDB
 			$modulo = "views/modules/usuarios.php";
 			return $modulo;
 		}
+		else if($enlacesModel == "logged")
+		{
+			$modulo = "views/modules/inicio.php";
+			return $modulo;
+		}
+
 		return "views/modules/registro.php";	
 	}
 }

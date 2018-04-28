@@ -134,6 +134,28 @@ class Datos extends Conexion
 		
 	}
 
+	#BORRADO DE USUARIO
+	#----------------------------------------
+	public function borrarUsuarioModel($datos, $tabla)
+	{
+		$query = "DELETE FROM $tabla WHERE id = :id";
+
+		$stmt = Conexion::conectar()->prepare($query);
+		
+		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+		if ($stmt->execute())
+		{
+			$stmt = null;
+			return true;
+		}
+		else
+		{
+			$stmt = null;
+			return false;
+		}
+	}
+
 }
 
  ?>

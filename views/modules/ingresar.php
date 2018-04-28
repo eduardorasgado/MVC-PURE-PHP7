@@ -1,3 +1,17 @@
+<?php 
+
+
+if ($_SESSION["validar"])
+{
+	//Si estamos logueados redireccionar a usuarios
+	header("location:index.php?action=logged");
+	//salir del script despeues de ejecutar lo que necesitamos ejecutar
+	exit();
+}
+
+
+ ?>
+
 <h1>INGRESAR</h1>
 
 <form method="POST" action="">

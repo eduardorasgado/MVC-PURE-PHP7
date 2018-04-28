@@ -102,7 +102,7 @@ class MvcController
 			echo "<td>".$user['password']."</td>";
 			echo "<td>".$user['email']."</td>";
 			echo '<td><a href="index.php?action=editar&id='.$user["id"].'"><button>Editar</button></a></td>';
-			echo '<td><a href="index.php?action=usuarios&id='.$user["id"].'"><button>Borrar</button><a></td>';
+			echo '<td><a href="index.php?action=usuarios&idBorrar='.$user["id"].'"><button>Borrar</button><a></td>';
 			echo "</tr>";
 		}
 
@@ -148,29 +148,23 @@ class MvcController
 
 	#BORRAR USUARIO
 	#------------------------------------------
-	public function actualizarUsuarioController()
+	public function borrarUsuarioController()
 	{
-		if(isset($_POST["usuarioEditar"]))
+		if(isset($_GET["action"]))
 		{
-			$datosController = [
-			"id" => $_POST["idEditar"],
-			"usuario" => $_POST["usuarioEditar"],
-			"password" => $_POST["passwordEditar"],
-			"email" => $_POST["emailEditar"]
-			];
-
-			$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
-
-			if ($response){
-				echo "Operación Exitosa";
-				header("location:index.php?action=change");
-			}
-			else
+			if(isset($_GET["idBorrar"]))
 			{
-				echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
-			}
-			
+				if ($_GET["action"] == "usuarios") {
+					
+					$id = $_GET["idBorrar"];
 
+					$response = Datos::borrarUsuarioModel($id, "usuarios");
+
+					if ($response) {
+						header("location:index.php?action=usuarios");
+					}
+				}
+			}
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 if (!$_SESSION["validar"])
 {
+	//Si no esta logueado no tiene derecho de entrar
 	header("location:index.php?action=ingresar");
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
@@ -26,7 +27,7 @@ if (!$_SESSION["validar"])
 
 		$ingreso = new MvcController();
 		$ingreso->vistaUsuariosController();
-		$ingreso->borrarUsuariosController();
+		$ingreso->borrarUsuarioController();
 		 ?>
 
 	</tbody>
