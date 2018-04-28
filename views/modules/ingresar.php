@@ -15,6 +15,13 @@ if(isset($_GET["action"]))
 	}
 }
 
+if(isset($_GET["action"]))
+{
+	if ($_GET["action"] == "captcha") {
+		echo "Oops! Has excedido la cantidad de itentos posible, actualiza e intenta en 5 min :)";
+	}
+}
+
 
  ?>
 

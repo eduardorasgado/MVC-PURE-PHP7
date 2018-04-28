@@ -107,15 +107,32 @@ class MvcController
 				$usuario = $_POST["usuarioIngreso"];
 				$maximoIntentos = 4;
 
-				if ($intentos < $maximoIntentos) {
+				if ($intentos < $maximoIntentos)
+				{
 					#comparar encriptados y usuarios
+					#SI COINCIDEN
 					if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $encrypted)
 					{
 						#inicio de la session particular
 						$_SESSION["validar"] = true;
 						$_SESSION["user"] = $datosController["usuario"];
+
+						#REINICIAR NUMERO DE INTENTOS FALLIDOS
+						$intentos = 0;
+						#Datos para actualizar intentos en la tabla y usuario
+						$datosController1 = [
+							"usuarioActual" => $usuario,
+							"actualizarIntentos" => $intentos
+						];
+
+						#llamado a modelo para actualizar intentos
+						$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
+
+						#PROCEDER A REDIRECCIONAR CON SESION INICIADA
 						header("location:index.php?action=usuarios");
 					}
+
+					#SI NO HAY COINCIDENCIA DE DATOS
 					else
 					{
 						#incremento a numero de intentos
@@ -130,12 +147,23 @@ class MvcController
 						#llamado a modelo para actualizar intentos
 						$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
 
+						#SE PROCEDE A MANDAR EL FALLO A VIEWS
 						header("location:index.php?action=fallo");
 					}
 				}
 				else
 				{
-					echo "Te has excedido del maximo de intentos";
+					$intentos = 0;
+					#Datos para actualizar intentos en la tabla y usuario
+					$datosController1 = [
+						"usuarioActual" => $usuario,
+						"actualizarIntentos" => $intentos
+					];
+
+					#llamado a modelo para actualizar intentos
+					$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
+
+					header("location:index.php?action=captcha");
 				}
 			}
 			else

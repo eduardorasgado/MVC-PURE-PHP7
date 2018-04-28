@@ -39,6 +39,11 @@ class EnlacesPaginasDB
 			$modulo = "views/modules/ingresar.php";
 			return $modulo;
 		}
+		else if($enlacesModel == "captcha")
+		{
+			$modulo = "views/modules/ingresar.php";
+			return $modulo;
+		}
 
 		return "views/modules/registro.php";	
 	}
