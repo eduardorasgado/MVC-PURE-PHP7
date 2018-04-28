@@ -14,7 +14,7 @@ $userToEdit = $editado->editarUsuarioController();
 
 <h1>EDITAR USUARIO</h1>
 
-<form method="POST" onsubmit="return validarIngreso()">
+<form method="POST" onsubmit="return validarCambio()">
 
 	<input type="hidden" <?php echo 'value="'.$userToEdit[0].'"' ?> name="idEditar">
 
