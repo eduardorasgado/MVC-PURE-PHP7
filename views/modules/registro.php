@@ -15,12 +15,12 @@ if (isset($_SESSION["validar"]))
 <form method="POST" onsubmit="return validarRegistro()">
 	<div class="form-group">
 		<label for="usuarioRegistro">Nombre</label>
-		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 15 caracteres" required>
+		<input id="usuarioRegistro" type="text" name="usuarioRegistro" placeholder="Máximo 15 caracteres" maxlength="15" required>
 	</div>
 
 	<div class="form-group">
 		<label for="emailRegistro">Correo Electrónico</label>
-		<input id="emailRegistro" type="email" name="emailRegistro" placeholder="ejemplo@gmail.com" required>
+		<input id="emailRegistro" type="email" name="emailRegistro" placeholder="ejemplo@gmail.com" maxlength="40" required>
 	</div>
 	<div class="form-group">
 		<label for="passwordRegistro">Contraseña</label>
