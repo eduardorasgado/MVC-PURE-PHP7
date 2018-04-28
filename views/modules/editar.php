@@ -1,5 +1,11 @@
 
 <?php 
+if (!$_SESSION["validar"])
+{
+	header("location:index.php?action=ingresar");
+	//salir del script despeues de ejecutar lo que necesitamos ejecutar
+	exit();
+}
 
 $editado =new MvcController();
 $userToEdit = $editado->editarUsuarioController();
@@ -10,7 +16,7 @@ $userToEdit = $editado->editarUsuarioController();
 
 <form method="POST">
 
-	<input type="hidden" <?php echo 'name="'.$userToEdit[0].'"' ?>>
+	<input type="hidden" <?php echo 'value="'.$userToEdit[0].'"' ?> name="idEditar">
 
 	<input type="text" name="usuarioEditar" <?php echo 'value="'.$userToEdit[1].'"' ?> required>
 

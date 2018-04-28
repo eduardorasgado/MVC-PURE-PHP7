@@ -102,7 +102,7 @@ class MvcController
 			echo "<td>".$user['password']."</td>";
 			echo "<td>".$user['email']."</td>";
 			echo '<td><a href="index.php?action=editar&id='.$user["id"].'"><button>Editar</button></a></td>';
-			echo "<td><a><button>Borrar</button><a></td>";
+			echo '<td><a href="index.php?action=usuarios&id='.$user["id"].'"><button>Borrar</button><a></td>';
 			echo "</tr>";
 		}
 
@@ -118,14 +118,14 @@ class MvcController
 		return $response;
 	}
 
-	#EDITAR USUARIO
+	#EDITAR/ACTUALIZAR USUARIO
 	#------------------------------------------
 	public function actualizarUsuarioController()
 	{
 		if(isset($_POST["usuarioEditar"]))
 		{
 			$datosController = [
-			"id" => $_POST["id"],
+			"id" => $_POST["idEditar"],
 			"usuario" => $_POST["usuarioEditar"],
 			"password" => $_POST["passwordEditar"],
 			"email" => $_POST["emailEditar"]
@@ -133,7 +133,43 @@ class MvcController
 
 			$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
 
-			header("location:index.php?action=usuarios");
+			if ($response){
+				echo "Operación Exitosa";
+				header("location:index.php?action=change");
+			}
+			else
+			{
+				echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+			}
+			
+
+		}
+	}
+
+	#BORRAR USUARIO
+	#------------------------------------------
+	public function actualizarUsuarioController()
+	{
+		if(isset($_POST["usuarioEditar"]))
+		{
+			$datosController = [
+			"id" => $_POST["idEditar"],
+			"usuario" => $_POST["usuarioEditar"],
+			"password" => $_POST["passwordEditar"],
+			"email" => $_POST["emailEditar"]
+			];
+
+			$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+
+			if ($response){
+				echo "Operación Exitosa";
+				header("location:index.php?action=change");
+			}
+			else
+			{
+				echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+			}
+			
 
 		}
 	}

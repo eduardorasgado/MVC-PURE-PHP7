@@ -17,6 +17,11 @@ class EnlacesPaginasDB
 			$modulo = "views/modules/ingresar.php";
 			return $modulo;
 		}
+		else if($enlacesModel == "change")
+		{
+			$modulo = "views/modules/usuarios.php";
+			return $modulo;
+		}
 		return "views/modules/registro.php";	
 	}
 }

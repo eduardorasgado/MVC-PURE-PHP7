@@ -26,9 +26,20 @@ if (!$_SESSION["validar"])
 
 		$ingreso = new MvcController();
 		$ingreso->vistaUsuariosController();
-
+		$ingreso->borrarUsuariosController();
 		 ?>
 
 	</tbody>
 </table>
 
+<?php 
+
+if ($_GET["action"])
+{
+	if ($_GET["action"] == "change")
+	{
+		echo "Operación Exitosa!";
+	}
+}
+
+ ?>

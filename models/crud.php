@@ -30,15 +30,17 @@ class Datos extends Conexion
 		##ejecutar la query, arroja true o false
 		if($stmt->execute())
 		{
+			#cerrando conexiones abiertas a la DB
+			$stmt = null;
 			return "success";
 		}
 		else
 		{
+			#cerrando conexiones abiertas a la DB
+			$stmt = null;
 			return "Error";
 		}
 
-		#cerrando conexiones abiertas a la DB
-		$stmt = null;
 	}
 
 	#INGRESO USUARIO
@@ -104,30 +106,32 @@ class Datos extends Conexion
 		return $pileEditar;
 	}
 
-	#ACTUALIZADO DE DATOS
+	#ACTUALIZADO DE DATOS DE USUARIO
 	#----------------------------------------
 	public function actualizarUsuarioModel($datos, $tabla)
 	{
-		$query = "UPDATE id, usuario, password, email FROM $tabla WHERE id = :id";
+		$query = "UPDATE $tabla SET usuario = :usuario, password = :password, email = :email WHERE id = :id";
 
 		$stmt = Conexion::conectar()->prepare($query);
 
-		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
-		$stmt->bindParam(":usuario", $datos, PDO::PARAM_INT);
-		$stmt->bindParam(":password", $datos, PDO::PARAM_INT);
-		$stmt->bindParam(":email", $datos, PDO::PARAM_INT);
+		$stmt->bindParam(":id", $datos['id'], PDO::PARAM_INT);
+		$stmt->bindParam(":usuario", $datos['usuario'], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos['password'], PDO::PARAM_STR);
+		$stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
 
-		$stmt->execute();
-
-		#fetch obitiene una fila de un conjunto de 
-		#resultados asociados al objeto PDO Statement
-		$pileEditar = $stmt->fetch();
-		#Osea devuelve la coincidencia
+		if ($stmt->execute())
+		{
+			$stmt = null;
+			return true;
+		}
+		else
+		{
+			$stmt = null;
+			return false;
+		}
 
 		#cerrando conexiones abiertas a la DB
-		$stmt = null;
-
-		return $pileEditar;
+		
 	}
 
 }
