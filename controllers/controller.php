@@ -46,11 +46,16 @@ class MvcController
 			#expresion regular
 			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"]) && preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailRegistro"]))
 			{
+
+				//ENCRIPTAR PASSWORD / USANDO HASH BLOWFISH
+				//CARACTERES ESPECIALES NUMEROS Y MAYUSCULAS
+				$encrypted = crypt($_POST["passwordRegistro"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
 				#PROCEDE EL REQUEST
 				$datosController = [
 				"usuario" => $_POST["usuarioRegistro"],
 				"email" => $_POST["emailRegistro"],
-				"password" => $_POST["passwordRegistro"]
+				"password" => $encrypted
 				];
 
 				$response = Datos::registroUsuarioModel($datosController, "usuarios");	
@@ -80,15 +85,21 @@ class MvcController
 
 			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioIngreso"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordIngreso"]))
 			{
+
+				#Encriptar
+				$encrypted = crypt($_POST["passwordIngreso"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+
 				#PROCEDE REQUEST
 				$datosController = [
 				"usuario" => $_POST["usuarioIngreso"],
-				"password" => $_POST["passwordIngreso"]
+				"password" => $encrypted
 				];
 
 				$response = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
-				if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $_POST['passwordIngreso'])
+				#comparar encriptados y usuarios
+				if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $encrypted)
 				{
 					#inicio de la session particular
 					$_SESSION["validar"] = true;
@@ -111,9 +122,10 @@ class MvcController
 
 		#imprimiendo en el html de la vista
 		foreach ($response as $key => $user) {
+			$decrypted = $user['password'];
 			echo "<tr>";
 			echo "<td>".$user['usuario']."</td>";
-			echo "<td>".$user['password']."</td>";
+			echo "<td>".$decrypted."</td>";
 			echo "<td>".$user['email']."</td>";
 			echo '<td><a href="index.php?action=editar&id='.$user["id"].'"><button>Editar</button></a></td>';
 			echo '<td><a href="index.php?action=usuarios&idBorrar='.$user["id"].'"><button>Borrar</button><a></td>';
@@ -140,11 +152,15 @@ class MvcController
 		{
 			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioEditar"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordEditar"]) && preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailEditar"]))
 			{
+
+				#Encriptar
+				$encrypted = crypt($_POST["passwordEditar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
 				#PROCEDE REQUEST
 				$datosController = [
 				"id" => $_POST["idEditar"],
 				"usuario" => $_POST["usuarioEditar"],
-				"password" => $_POST["passwordEditar"],
+				"password" => $encryted,
 				"email" => $_POST["emailEditar"]
 				];
 

@@ -56,7 +56,7 @@
 			display: inline-block;
 		}
 		table {
-			margin-left: 15vw;
+			margin-left: 0;
 		}
 
 		.terms-c {
