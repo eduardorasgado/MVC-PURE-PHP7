@@ -13,19 +13,21 @@
 			<a href="index.php?action=contactenos">Contáctenos</a>
 		</li-->
 		<li>
-			<a href="index.php?action=inicio">Inicio</a>
+			<a href="inicio">Inicio</a>
+			<!--Antes sin htaccess
+			<a href="index.php?action=inicio">Inicio</a> -->
 		</li>
 		<li>
 			<a href="index.php">Registro</a>
 		</li>
 		<li>
-			<a href="index.php?action=ingresar">Login</a>
+			<a href="ingresar">Login</a>
 		</li>
 		<li>
-			<a href="index.php?action=usuarios">Usuarios</a>
+			<a href="usuarios">Usuarios</a>
 		</li>
 		<li>
-			<a href="index.php?action=salir">Salir</a>
+			<a href="salir">Salir</a>
 		</li>
 	</ul>
 </nav>

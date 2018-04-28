@@ -3,7 +3,7 @@
 if (!isset($_SESSION["validar"]))
 {
 	//Si estamos logueados redireccionar a inicio
-	header("location:index.php?action=notlogged");
+	header("location:notlogged");
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
 }

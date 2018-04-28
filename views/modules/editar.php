@@ -2,7 +2,10 @@
 <?php 
 if (!$_SESSION["validar"])
 {
-	header("location:index.php?action=ingresar");
+	header("location:ingresar");
+	//Antes sin htaccess:
+	//header("location:index.php?action=ingresar");
+
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
 }

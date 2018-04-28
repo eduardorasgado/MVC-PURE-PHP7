@@ -65,7 +65,10 @@ class MvcController
 					//con header aseguramos no tener
 					//duplicados de usuario por cada
 					//vez que actualizamos
-					header("location:index.php?action=ok");
+					header("location:ok");
+
+					/*ANTES SIN .htaccess
+					header("location:index.php?action=ok");*/
 				}
 				else
 				{
@@ -129,7 +132,10 @@ class MvcController
 						$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
 
 						#PROCEDER A REDIRECCIONAR CON SESION INICIADA
-						header("location:index.php?action=usuarios");
+						header("location:usuarios");
+
+						/*ANTES SIN .htaccess
+						header("location:index.php?action=usuarios");*/
 					}
 
 					#SI NO HAY COINCIDENCIA DE DATOS
@@ -148,7 +154,7 @@ class MvcController
 						$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
 
 						#SE PROCEDE A MANDAR EL FALLO A VIEWS
-						header("location:index.php?action=fallo");
+						header("location:fallo");
 					}
 				}
 				else
@@ -163,7 +169,7 @@ class MvcController
 					#llamado a modelo para actualizar intentos
 					$responseActualizarIntentos = Datos::intentosUsuarioModel($datosController1, "usuarios");
 
-					header("location:index.php?action=captcha");
+					header("location:captcha");
 				}
 			}
 			else
@@ -244,7 +250,7 @@ class MvcController
 
 					if ($response){
 						echo "Operación Exitosa";
-						header("location:index.php?action=change");
+						header("location:change");
 					}
 					else
 					{
@@ -279,7 +285,7 @@ class MvcController
 					$response = Datos::borrarUsuarioModel($id, "usuarios");
 
 					if ($response) {
-						header("location:index.php?action=usuarios");
+						header("location:usuarios");
 					}
 				}
 			}

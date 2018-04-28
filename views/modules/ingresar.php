@@ -3,7 +3,12 @@
 if (isset($_SESSION["validar"]))
 {
 	//Si estamos logueados redireccionar a inicio
-	header("location:index.php?action=logged");
+	
+	header("location:logged");
+
+	//Sin htaccess
+	//header("location:index.php?action=logged");
+	
 	//salir del script despeues de ejecutar lo que necesitamos ejecutar
 	exit();
 }
