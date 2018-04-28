@@ -36,7 +36,7 @@
 		}
 		form {
 			margin-left: 27vw;
-			width: 400px;
+			width: 300px;
 		}
 
 		.form-group{
@@ -57,6 +57,15 @@
 		}
 		table {
 			margin-left: 15vw;
+		}
+
+		.terms-c {
+			margin-bottom: 15px;
+		}
+
+		form .submit-button {
+			margin-left: 6vw;
+			cursor: pointer;
 		}
 	</style>
 
