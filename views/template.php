@@ -36,10 +36,19 @@
 		}
 		form {
 			margin-left: 27vw;
+			width: 400px;
 		}
-		form input {
+
+		.form-group{
 			display: block;
 			margin-top: 20px;
+		}
+		form input {
+			display: block;			
+		}
+
+		form label {
+			display: inline-block;
 		}
 		table {
 			margin-left: 15vw;

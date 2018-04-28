@@ -21,9 +21,14 @@ if(isset($_GET["action"]))
 <h1>INGRESAR</h1>
 
 <form method="POST" action="">
-	<input type="text" name="usuarioIngreso" placeholder="usuario" required>
-
-	<input type="password" name="passwordIngreso" placeholder="Contraseña" required>
+	<div class="form-group">
+		<label for="usuarioIngreso">Nombre de Usuario</label>
+		<input id="usuarioIngreso" type="text" name="usuarioIngreso" placeholder="usuario" required>
+	</div>
+	<div class="form-group">
+		<label for="passwordIngreso">Contraseña</label>
+		<input id="passwordIngreso" type="password" name="passwordIngreso" placeholder="Contraseña" required>
+	</div>
 
 	<input type="submit" name="" value="Enviar">
 </form>
