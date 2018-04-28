@@ -16,4 +16,10 @@ session_start();
 $mvc = new MvcController();
 $mvc->plantilla();
 
- ?>
+/*
+Es recomendable quitar la etiqueta de final al documento de PHP puro,
+esto es debido a que da espacio a inyeccion de codigo malicioso debido a ataques externos.
+
+Evitamos salida del buffer con ello
+
+*/

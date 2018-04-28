@@ -15,5 +15,3 @@ class EnlacesPaginas
 		return "views/modules/inicio.php";	
 	}
 }
-
- ?>
