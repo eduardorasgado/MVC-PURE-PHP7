@@ -18,11 +18,26 @@ $userToEdit = $editado->editarUsuarioController();
 
 	<input type="hidden" <?php echo 'value="'.$userToEdit[0].'"' ?> name="idEditar">
 
-	<input type="text" name="usuarioEditar" <?php echo 'value="'.$userToEdit[1].'"' ?> minlength="4" maxlength="20" required>
+	<div class="form-group">
+		<label for="usuarioEditar">Nombre</label>
+		<input id="usuarioEditar" type="text" name="usuarioEditar" <?php echo 'value="'.$userToEdit[1].'"' ?> minlength="4" maxlength="20" required>
+	</div>
 
-	<input type="text" name="passwordEditar" <?php echo 'value="'.$userToEdit[2].'"' ?> minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
 
-	<input type="email" name="emailEditar" <?php echo 'value="'.$userToEdit[3].'"' ?> minlength="6" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Por favor procura registrar un correo válido." required>
+	<div class="form-group">
+		<label for="passwordComprobar">Contraseña anterior</label>
+		<input id="passwordComprobar" type="text" name="passwordComprobar" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
+	</div>
+
+	<div class="form-group">
+		<label for="passwordNew">Nueva Contraseña</label>
+		<input id="passwordNew" type="text" name="passwordNew"  minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
+	</div>
+
+	<div>
+		<label for="emailEditar">Correo Electrónico</label>
+		<input id="emailEditar" type="email" name="emailEditar" <?php echo 'value="'.$userToEdit[3].'"' ?> minlength="6" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Por favor procura registrar un correo válido." required>
+	</div>
 
 	<input type="submit" name="" value="Actualizar">
 </form>

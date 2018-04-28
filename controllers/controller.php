@@ -72,6 +72,10 @@ class MvcController
 					header("location: index.php");
 				}
 			}
+			else
+			{
+				echo "Algo salio mal. Escribe bien los datos que se piden";
+			}
 		}
 
 	}
@@ -110,6 +114,10 @@ class MvcController
 				{
 					header("location:index.php?action=fallo");
 				}
+			}
+			else
+			{
+				echo "Algo salio mal. Escribe bien los datos que se piden";
 			}
 		}
 	}
@@ -150,31 +158,57 @@ class MvcController
 	{
 		if(isset($_POST["usuarioEditar"]))
 		{
-			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioEditar"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordEditar"]) && preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailEditar"]))
+			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioEditar"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordComprobar"]) &&
+				preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordNew"]) &&
+			 	preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailEditar"]))
 			{
 
 				#Encriptar
-				$encrypted = crypt($_POST["passwordEditar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+				$encryptedC = crypt($_POST["passwordComprobar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+				$encryptedN = crypt($_POST["passwordNew"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-				#PROCEDE REQUEST
-				$datosController = [
+
+				#COMPROBANDO OLD PASSWORD
+				$datosController1 = [
 				"id" => $_POST["idEditar"],
 				"usuario" => $_POST["usuarioEditar"],
-				"password" => $encryted,
+				"password" => $encryptedC,
 				"email" => $_POST["emailEditar"]
 				];
 
-				$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+				$responseOld = Datos::ingresoUsuarioModel($datosController1, "usuarios");
 
-				if ($response){
-					echo "Operación Exitosa";
-					header("location:index.php?action=change");
+				#comparar encriptados y usuarios
+				if ($responseOld['usuario'] == $_POST['usuarioEditar'] && $responseOld['password'] == $encryptedC)
+				{
+					#PROCEDE REQUEST
+					$datosController = [
+					"id" => $_POST["idEditar"],
+					"usuario" => $_POST["usuarioEditar"],
+					"password" => $encryptedN,
+					"email" => $_POST["emailEditar"]
+					];
+
+					$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+
+					if ($response){
+						echo "Operación Exitosa";
+						header("location:index.php?action=change");
+					}
+					else
+					{
+						echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+					}
 				}
 				else
 				{
-					echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+					echo "No coincide la contraseña anterior.";
 				}
-			}		
+			}
+			else
+			{
+				echo "Algo salio mal. Escribe bien los datos";
+			}
 
 		}
 	}
