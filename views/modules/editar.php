@@ -29,12 +29,12 @@ $userToEdit = $editado->editarUsuarioController();
 
 	<div class="form-group">
 		<label for="passwordComprobar">Contraseña anterior</label>
-		<input id="passwordComprobar" type="text" name="passwordComprobar" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
+		<input id="passwordComprobar" type="password" name="passwordComprobar" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
 	</div>
 
 	<div class="form-group">
 		<label for="passwordNew">Nueva Contraseña</label>
-		<input id="passwordNew" type="text" name="passwordNew"  minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
+		<input id="passwordNew" type="password" name="passwordNew"  minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es mejor usar mínimo una mayúscula, una minúscula y un número" required>
 	</div>
 
 	<div>
