@@ -102,17 +102,27 @@ class MvcController
 
 				$response = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
-				#comparar encriptados y usuarios
-				if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $encrypted)
-				{
-					#inicio de la session particular
-					$_SESSION["validar"] = true;
-					$_SESSION["user"] = $datosController["usuario"];
-					header("location:index.php?action=usuarios");
+				$intentos = $response["intentos"];
+				$maximoIntentos = 4;
+
+				if ($intentos < $maximoIntentos) {
+					#comparar encriptados y usuarios
+					if ($response['usuario'] == $_POST['usuarioIngreso'] && $response['password'] == $encrypted)
+					{
+						#inicio de la session particular
+						$_SESSION["validar"] = true;
+						$_SESSION["user"] = $datosController["usuario"];
+						header("location:index.php?action=usuarios");
+					}
+					else
+					{
+						$intentos++;
+						header("location:index.php?action=fallo");
+					}
 				}
 				else
 				{
-					header("location:index.php?action=fallo");
+					echo "Te has excedido del maximo de intentos"
 				}
 			}
 			else
@@ -181,7 +191,7 @@ class MvcController
 				#comparar encriptados y usuarios
 				if ($responseOld['usuario'] == $_POST['usuarioEditar'] && $responseOld['password'] == $encryptedC)
 				{
-					#PROCEDE REQUEST
+					#PROCEDE REQUEST /ESCRIBIENDO NUEVA PASS
 					$datosController = [
 					"id" => $_POST["idEditar"],
 					"usuario" => $_POST["usuarioEditar"],

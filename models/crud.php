@@ -47,7 +47,7 @@ class Datos extends Conexion
 	#---------------------------------------------
 	public function ingresoUsuarioModel($datos, $tabla)
 	{
-		$query = "SELECT usuario, password FROM $tabla WHERE usuario = :usuario";
+		$query = "SELECT usuario, password, intentos FROM $tabla WHERE usuario = :usuario";
 
 		$stmt = Conexion::conectar()->prepare($query);
 
