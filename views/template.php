@@ -61,5 +61,9 @@
 		$mvc->enlacesDBController();
 		 ?>
 	</section>
+
+	<!--validacion lado cliente-->
+	<script type="text/javascript" src="views/js/validarRegistro.js"></script>
+
 </body>
 </html>

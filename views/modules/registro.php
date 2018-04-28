@@ -12,7 +12,7 @@ if (isset($_SESSION["validar"]))
 
 <h1>REGISTRO DE USUARIO</h1>
 
-<form method="POST">
+<form method="POST" onsubmit="return validarRegistro()">
 	<input type="text" name="usuarioRegistro" placeholder="Usuario" required>
 
 	<input type="email" name="emailRegistro" placeholder="Correo Electrónico" required>

@@ -1,4 +1,4 @@
-<h1>Bienvenido!</h1>
+<h1>Bienvenido<?php if (isset($_SESSION["validar"])){ echo " ".$_SESSION["user"];} ?>!</h1>
 
 <?php 
 

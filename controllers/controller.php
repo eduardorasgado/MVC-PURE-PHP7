@@ -80,6 +80,7 @@ class MvcController
 			{
 				#inicio de la session particular
 				$_SESSION["validar"] = true;
+				$_SESSION["user"] = $datosController["usuario"];
 				header("location:index.php?action=usuarios");
 			}
 			else
