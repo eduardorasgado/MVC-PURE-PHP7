@@ -292,12 +292,25 @@ class MvcController
 		}
 	}
 
-	#PETICION AJAX
+	#PETICION AJAX VALIDAR-USUARIO
 	#---------------------------------------------------
 	public function validarUsuarioController($datos)
 	{
 		$datos = ["usuario" => $datos];
 		$response = Datos::validarUsuarioModel($datos, "usuarios");
+		if (!empty($response)) {
+			# code...
+			return true;
+		}
+		return false;
+	}
+
+	#PETICION AJAX VALIDAR-EMAIL
+	#---------------------------------------------------
+	public function validarEmailController($datos)
+	{
+		$datos = ["email" => $datos];
+		$response = Datos::validarEmailModel($datos, "usuarios");
 		if (!empty($response)) {
 			# code...
 			return true;

@@ -185,7 +185,7 @@ class Datos extends Conexion
 	#---------------------------------------------
 	public function validarUsuarioModel($datos, $tabla)
 	{
-		$query = "SELECT usuario, password, intentos FROM $tabla WHERE usuario = :usuario";
+		$query = "SELECT usuario, password FROM $tabla WHERE usuario = :usuario";
 
 		$stmt = Conexion::conectar()->prepare($query);
 
@@ -195,13 +195,36 @@ class Datos extends Conexion
 
 		#fetch obitiene una fila de un conjunto de 
 		#resultados asociados al objeto PDO Statement
-		$pileIngreso = $stmt->fetch();
+		$pileUser = $stmt->fetch();
 		#Osea devuelve la coincidencia
 
 		#cerrando conexiones abiertas a la DB
 		$stmt = null;
 
-		return $pileIngreso;
+		return $pileUser;
+	}
+
+	#VALIDAR AJAX EMAIL
+	#---------------------------------------------
+	public function validarEmailModel($datos, $tabla)
+	{
+		$query = "SELECT usuario, email FROM $tabla WHERE email = :email";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		#fetch obitiene una fila de un conjunto de 
+		#resultados asociados al objeto PDO Statement
+		$pileEmail = $stmt->fetch();
+		#Osea devuelve la coincidencia
+
+		#cerrando conexiones abiertas a la DB
+		$stmt = null;
+
+		return $pileEmail;
 	}
 
 }

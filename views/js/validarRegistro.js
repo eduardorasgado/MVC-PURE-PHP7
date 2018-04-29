@@ -1,6 +1,11 @@
+var usuarioExistente = false;
+var emailExistente = false;
+
 /*======================================
-=            VALIDADOR AJAX            =
+=            VALIDADOR AJAX USUARIO    =
 ======================================*/
+
+
 /*Utilizaremos AJAX con JQuery*/
 $('#usuarioRegistro').change(function(){
 	var usuario = $('#usuarioRegistro').val();
@@ -21,9 +26,13 @@ $('#usuarioRegistro').change(function(){
 			console.log(respuesta);
 			if (respuesta != "") 
 			{
+				usuarioExistente = true;
+				document.querySelector("label[for='usuarioRegistro']").innerHTML = "Nombre";
 				document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br><span>El usuario "+respuesta+" ya existe</span>";
 			}
-			else{
+			else
+			{
+				usuarioExistente = false;
 				document.querySelector("label[for='usuarioRegistro']").innerHTML = "Nombre";
 			}
 		},
@@ -34,9 +43,51 @@ $('#usuarioRegistro').change(function(){
 /*=====  End of VALIDADOR AJAX  ======*/
 
 
+/*=======================================
+=            AJAX PARA EMAIL            =
+=======================================*/
+
+/*Utilizaremos AJAX con JQuery*/
+$('#emailRegistro').change(function(){
+	var email = $('#emailRegistro').val();
+	/*console.log(usuario);*/
+
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+	
+	$.ajax({
+		url:"views/modules/ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(respuesta){
+			//respuesta que vendra de ajax.php
+			console.log(respuesta);
+			if (respuesta != "") 
+			{
+				emailExistente = true;
+				document.querySelector("label[for='emailRegistro']").innerHTML = "Correo Electrónico";
+				document.querySelector("label[for='emailRegistro']").innerHTML += "<br><span>El email "+respuesta+" ya existe</span>";
+			}
+			else
+			{
+				emailExistente = false;
+				document.querySelector("label[for='emailRegistro']").innerHTML = "Correo Electrónico";
+			}
+		},
+	});
+});
+
+
+/*=====  End of AJAX PARA EMAIL  ======*/
+
+
 /*========================================
 =            VALIDAR REGISTRO            =
 ========================================*/
+
 
 function validarRegistro()
 {
@@ -62,6 +113,11 @@ function validarRegistro()
 		if (!expression.test(usuario))
 		{
 			document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br>Que tal si omitimos los caracteres especiales :)";
+			return false;
+		}
+
+		if (usuarioExistente) 
+		{
 			return false;
 		}
 	}
@@ -104,6 +160,11 @@ function validarRegistro()
 		if (!expressionsEmail.test(email))
 		{
 			document.querySelector("label[for='emailRegistro']").innerHTML += "<br>Por favor inserta un email válido :)";
+			return false;
+		}
+
+		if (emailExistente) 
+		{
 			return false;
 		}
 	}
