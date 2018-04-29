@@ -68,7 +68,8 @@
 			cursor: pointer;
 		}
 	</style>
-
+	<!--Libreria Jquery-->
+	<script type="text/javascript" src="views/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<header>

@@ -1,3 +1,32 @@
+/*======================================
+=            VALIDADOR AJAX            =
+======================================*/
+/*Utilizaremos AJAX con JQuery*/
+$('#usuarioRegistro').change(function(){
+	var usuario = $('#usuarioRegistro').val();
+	/*console.log(usuario);*/
+
+	var datos = new FormData();
+	datos.append("validarUsuario", usuario);
+	
+	$.ajax({
+		url:"views/modules/ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(respuesta){
+			//respuesta que vendra de ajax.php
+			console.log(respuesta);
+		},
+	});
+});
+
+
+/*=====  End of VALIDADOR AJAX  ======*/
+
+
 /*========================================
 =            VALIDAR REGISTRO            =
 ========================================*/
