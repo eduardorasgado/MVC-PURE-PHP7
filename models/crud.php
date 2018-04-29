@@ -181,4 +181,27 @@ class Datos extends Conexion
 		}
 	}
 
+	#VALIDAR AJAX USUARIO
+	#---------------------------------------------
+	public function validarUsuarioModel($datos, $tabla)
+	{
+		$query = "SELECT usuario, password, intentos FROM $tabla WHERE usuario = :usuario";
+
+		$stmt = Conexion::conectar()->prepare($query);
+
+		$stmt->bindParam(":usuario", $datos['usuario'], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		#fetch obitiene una fila de un conjunto de 
+		#resultados asociados al objeto PDO Statement
+		$pileIngreso = $stmt->fetch();
+		#Osea devuelve la coincidencia
+
+		#cerrando conexiones abiertas a la DB
+		$stmt = null;
+
+		return $pileIngreso;
+	}
+
 }

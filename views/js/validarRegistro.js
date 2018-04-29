@@ -19,6 +19,13 @@ $('#usuarioRegistro').change(function(){
 		success: function(respuesta){
 			//respuesta que vendra de ajax.php
 			console.log(respuesta);
+			if (respuesta != "") 
+			{
+				document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br><span>El usuario "+respuesta+" ya existe</span>";
+			}
+			else{
+				document.querySelector("label[for='usuarioRegistro']").innerHTML = "Nombre";
+			}
 		},
 	});
 });

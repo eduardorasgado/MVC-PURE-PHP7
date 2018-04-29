@@ -292,6 +292,19 @@ class MvcController
 		}
 	}
 
+	#PETICION AJAX
+	#---------------------------------------------------
+	public function validarUsuarioController($datos)
+	{
+		$datos = ["usuario" => $datos];
+		$response = Datos::validarUsuarioModel($datos, "usuarios");
+		if (!empty($response)) {
+			# code...
+			return true;
+		}
+		return false;
+	}
+
 	#-------------------------------------
 	private function checkSet()
 	{

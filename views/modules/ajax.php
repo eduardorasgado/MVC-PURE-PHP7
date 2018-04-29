@@ -12,7 +12,15 @@ class Ajax{
 	public function validarUsuarioAjax(){
 		$datos = $this->validarUsuario;
 		$response = MvcController::validarUsuarioController($datos);
-		echo $response;
+		
+		//mandamos esto a validarRegistro
+		if ($response) {
+			echo $datos;
+		}
+		else
+		{
+			echo "";
+		}
 	}
 }
 
