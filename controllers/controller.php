@@ -216,50 +216,97 @@ class MvcController
 		if(isset($_POST["usuarioEditar"]))
 		{
 			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioEditar"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordComprobar"]) &&
-				preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordNew"]) &&
 			 	preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailEditar"]))
 			{
-
-				#Encriptar
-				$encryptedC = crypt($_POST["passwordComprobar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-				$encryptedN = crypt($_POST["passwordNew"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-
-				#COMPROBANDO OLD PASSWORD
-				$datosController1 = [
-				"id" => $_POST["idEditar"],
-				"usuario" => $_POST["usuarioEditar"],
-				"password" => $encryptedC,
-				"email" => $_POST["emailEditar"]
-				];
-
-				$responseOld = Datos::ingresoUsuarioModel($datosController1, "usuarios");
-
-				#comparar encriptados y usuarios
-				if ($responseOld['usuario'] == $_POST['usuarioEditar'] && $responseOld['password'] == $encryptedC)
+				if ($_POST["passwordNew"] != "")
 				{
-					#PROCEDE REQUEST /ESCRIBIENDO NUEVA PASS
-					$datosController = [
-					"id" => $_POST["idEditar"],
-					"usuario" => $_POST["usuarioEditar"],
-					"password" => $encryptedN,
-					"email" => $_POST["emailEditar"]
-					];
+					if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordNew"]))
+					{
+						#Encriptar
+						$encryptedC = crypt($_POST["passwordComprobar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+						$encryptedN = crypt($_POST["passwordNew"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-					$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
 
-					if ($response){
-						echo "Operación Exitosa";
-						header("location:change");
+						#COMPROBANDO OLD PASSWORD
+						$datosController1 = [			
+						"usuario" => $_POST["usuarioEditar"],
+						];
+
+						$responseOld = Datos::ingresoUsuarioModel($datosController1, "usuarios");
+
+						#comparar encriptados y usuarios
+						if ($responseOld['usuario'] == $_POST['usuarioEditar'] && $responseOld['password'] == $encryptedC)
+						{
+							#PROCEDE REQUEST /ESCRIBIENDO NUEVA PASS
+							$datosController = [
+							"id" => $_POST["idEditar"],
+							"usuario" => $_POST["usuarioEditar"],
+							"password" => $encryptedN,
+							"email" => $_POST["emailEditar"]
+							];
+
+							$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+
+							if ($response){
+								echo "Operación Exitosa";
+								header("location:change");
+							}
+							else
+							{
+								echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+							}
+						}
+						else
+						{
+							echo "No coincide la contraseña anterior.";
+						}
 					}
 					else
 					{
-						echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+						echo "La nueva contraseña no es segura, prueba otra.";
 					}
-				}
+				} //Si esta seteada password y new password
+
 				else
 				{
-					echo "No coincide la contraseña anterior.";
+					//Si no esta seteada la nueva password
+					#Encriptar
+					$encryptedC = crypt($_POST["passwordComprobar"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+					#COMPROBANDO OLD PASSWORD
+						$datosController1 = [			
+						"usuario" => $_POST["usuarioEditar"],
+						];
+
+						$responseOld = Datos::ingresoUsuarioModel($datosController1, "usuarios");
+
+						#comparar encriptados y usuarios
+						if ($responseOld['usuario'] == $_POST['usuarioEditar'] && $responseOld['password'] == $encryptedC)
+						{
+							#PROCEDE REQUEST /ESCRIBIENDO NUEVA PASS
+							$datosController = [
+							"id" => $_POST["idEditar"],
+							"usuario" => $_POST["usuarioEditar"],
+							"password" => $encryptedC,
+							"email" => $_POST["emailEditar"]
+							];
+
+							$response = Datos::actualizarUsuarioModel($datosController, "usuarios");
+
+							if ($response){
+								echo "Operación Exitosa";
+								header("location:change");
+							}
+							else
+							{
+								echo "Algo salió mal. Por favor Vuelva a intentar más tarde";
+							}
+						}
+						else
+						{
+							echo "No coincide la contraseña anterior.";
+						}
+
 				}
 			}
 			else

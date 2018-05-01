@@ -28,7 +28,7 @@ $('#usuarioRegistro').change(function(){
 			{
 				usuarioExistente = true;
 				document.querySelector("label[for='usuarioRegistro']").innerHTML = "Nombre";
-				document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br><span>El usuario "+respuesta+" ya existe</span>";
+				document.querySelector("label[for='usuarioRegistro']").innerHTML += "<br><span style='color: red'>El usuario "+respuesta+" ya existe</span>";
 			}
 			else
 			{
@@ -69,7 +69,7 @@ $('#emailRegistro').change(function(){
 			{
 				emailExistente = true;
 				document.querySelector("label[for='emailRegistro']").innerHTML = "Correo Electrónico";
-				document.querySelector("label[for='emailRegistro']").innerHTML += "<br><span>El email "+respuesta+" ya existe</span>";
+				document.querySelector("label[for='emailRegistro']").innerHTML += "<br><span style='color: red'>El email "+respuesta+" ya existe</span>";
 			}
 			else
 			{
